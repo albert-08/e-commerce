@@ -39,7 +39,7 @@ function Signup(){
                             onChange={handleInputChange}
                             className="form-control" 
                             name="first_name"
-                            d="first_name"/>
+                            id="first_name"/>
                         </div>
                     </div>
                     <div className="col-md-5">
@@ -85,7 +85,49 @@ function Signup(){
                             name="password_confirm" 
                             id="password_confirm"/>
                         </div>
-                    </div>       
+                    </div>
+                    <div className="col-md-5">
+                        <div className="form-group">
+                            <label htmlFor="">Fecha de nacimiento</label>
+                            <input type="date" 
+                            value={inputs.birth_date}
+                            onChange={handleInputChange}
+                            className="form-control" 
+                            name="birth_date"
+                            id="birth_date"/>
+                        </div>
+                    </div>
+                    <div className="col-md-5">
+                        <div className="form-group">
+                            <label htmlFor="">Genero</label>
+                            <select 
+                            value={inputs.gender}
+                            onChange={handleInputChange}
+                            className="form-control" 
+                            name="gender" 
+                            id="gender">
+                                <option value=" " selected>Choose an option</option>
+                                <option value="M">Hombre</option>
+                                <option value="F">Mujer</option>
+                                <option value="X">Otro</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div className="col-md-5">
+                        <div className="form-group">
+                            <label htmlFor="">Tipo de Usuario</label>
+                            <select 
+                            value={inputs.role}
+                            onChange={handleInputChange}
+                            className="form-control" 
+                            name="role" 
+                            id="role">
+                                <option value=" " selected>Choose an option</option>
+                                <option value="ADMIN">Administrador</option>
+                                <option value="CUSTOMER">Cliente</option>
+                            </select>
+                        </div>
+                    </div>      
                     <div className="col-md-12">
                         <button type="submit" className="btn btn-dark">Iniciar</button>
                     </div>
