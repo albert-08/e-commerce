@@ -9,7 +9,7 @@ const Navbar = () => {
     const { state } = useContext(AppContext)
     const { cart } = state
     const user = payload()
-
+    
     return (
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
             <Link className="navbar-brand" to="/">
@@ -43,6 +43,14 @@ const Navbar = () => {
                             Logout
                         </Link>
                     </li>
+                    <li className="nav-item" active>
+                        <Link className="nav-link" to="/checkout">
+                            Cart
+                        </Link>            
+                    </li>
+                    <li className="header-alert" active>
+                        {cart.length}              
+                    </li>
                 </ul>) : (<ul className="navbar-nav">
                     <li className="nav-item active">
                         <Link className="nav-link" to="/login">
@@ -56,14 +64,6 @@ const Navbar = () => {
                     </li>
                 </ul>
                 )}
-            </div>
-            <div className="Header">
-                <div className="Header-checkout">
-                    <Link to="/checkout">
-                        Checkout
-                    </Link>
-                    {cart.length > 0 && <div className="Header-alert">{cart.length}</div>}              
-                </div>
             </div>
         </nav>
     )
