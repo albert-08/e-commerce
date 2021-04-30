@@ -3,6 +3,7 @@ import {BrowserRouter as Router, Redirect, Route, Switch} from 'react-router-dom
 import Home from './views/Home'
 import Signup from './views/Signup'
 import Login from './views/Login'
+import Profile from './views/Profile'
 import Checkout from './containers/Checkout'
 import Information from './containers/Information'
 import Payment from './containers/Payment'
@@ -28,6 +29,7 @@ const Routes = () => {
                         <Route exact path="/login" component={Login} />
                         <Route exact path="/signup" component={Signup} />
                         <Route exact path="/logout" component={Logout} />
+                        <Route exact path="/profile" component={Profile} />
                         <Route exact path="/checkout" component={Checkout} />
                         <Route exact path="/checkout/information" component={Information} />
                         <Route exact path="/checkout/payment" component={Payment} />
