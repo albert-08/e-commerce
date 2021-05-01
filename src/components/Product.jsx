@@ -5,16 +5,19 @@ const Product = ({ product, handleAddToCart }) => (
             <img src={product.image} alt={product.title}/>
             <div className="Product-item-info">
                 <h2>
-                    {product.title}
+                    <p>{product.sku}</p>
+                    <p>{product.product_name}</p>
+                    <br/>
                     <span>
                         $
                         {' '} 
                         {product.price}
                     </span>
                 </h2>
-                <p>{product.description}</p>
+                <p>{product.brand}</p>
+                <p>{product.category}</p>
             </div>
-            <button type="button" onClick={handleAddToCart(product)}>Comprar</button>
+            <button type="button" onClick={handleAddToCart(product)}>Add to Cart</button>
         </div>
     )
 
