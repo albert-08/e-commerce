@@ -13,12 +13,16 @@ function Home(){
                     ? 
                         <>
                             <h1>Bienvenido!</h1>
-                            <button>Agregar un producto</button>
+                            <Link to="/addProduct">
+                                <button type="button">Agregar un producto</button>
+                            </Link>
                             <Link to="/users">
                                 <button type="button">Consultar clientes</button>
                             </Link>
                             <button>Consultar inventario</button>
-                            <button>Editar Usuario</button>
+                            <Link to="/editUser">
+                                <button type="button">Editar Usuario</button>
+                            </Link>
                             <Link to="/signup">
                                 <button type="button">Agregar Usuario</button>
                             </Link>

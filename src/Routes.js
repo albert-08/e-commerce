@@ -13,6 +13,8 @@ import Layout from './components/Layout'
 import AppContext from './context/AppContext'
 import useInitialState from './hooks/useInitialState'
 import Users from './components/Users'
+import EditUser from './components/EditUser'
+import AddProduct from './components/AddProduct'
 
 const Logout = () => {
     window.localStorage.removeItem('token')
@@ -31,6 +33,8 @@ const Routes = () => {
                         <Route exact path="/signup" component={Signup} />
                         <Route exact path="/logout" component={Logout} />
                         <Route exact path="/users" component={Users} />
+                        <Route exact path="/editUser" component={EditUser} />
+                        <Route exact path="/addProduct" component={AddProduct} />
                         <Route exact path="/profile" component={Profile} />
                         <Route exact path="/checkout" component={Checkout} />
                         <Route exact path="/checkout/information" component={Information} />

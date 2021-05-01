@@ -1,6 +1,7 @@
 import React,{useEffect,useState} from 'react'
 import axios from 'axios'
 import protect from '../utils/protect'
+import { Link } from 'react-router-dom'
 
 function Profile(){
     
@@ -37,6 +38,10 @@ function Profile(){
                         <span>Email: {profile.email}</span>
                         <br/>
                         <span>Tipo de usuario: {profile.role}</span>
+                        <br/>
+                        <Link to="/editUser">
+                            <button type="button">Editar perfil</button>
+                        </Link>
                     </div>
                 </div>              
             </div>
