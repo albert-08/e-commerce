@@ -4,8 +4,6 @@ import Home from './views/Home'
 import Signup from './views/Signup'
 import Login from './views/Login'
 import Profile from './views/Profile'
-import Users from './views/Users'
-import ProductsList from './views/ProductsList'
 import Checkout from './containers/Checkout'
 import Information from './containers/Information'
 import Payment from './containers/Payment'
@@ -14,6 +12,7 @@ import NotFound from './containers/NotFound'
 import Layout from './components/Layout'
 import AppContext from './context/AppContext'
 import useInitialState from './hooks/useInitialState'
+import Users from './components/Users'
 
 const Logout = () => {
     window.localStorage.removeItem('token')
@@ -32,7 +31,6 @@ const Routes = () => {
                         <Route exact path="/signup" component={Signup} />
                         <Route exact path="/logout" component={Logout} />
                         <Route exact path="/users" component={Users} />
-                        <Route exact path="/list" component={ProductsList} />
                         <Route exact path="/profile" component={Profile} />
                         <Route exact path="/checkout" component={Checkout} />
                         <Route exact path="/checkout/information" component={Information} />
