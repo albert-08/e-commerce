@@ -2,8 +2,10 @@ import React from 'react'
 import {useHistory} from 'react-router-dom'
 import useForm from '../hooks/useForm' 
 import axios from 'axios'
+import payload from '../utils/payload'
 
 function Signup(){
+    const user = payload()
     let history = useHistory()
     const sendData = (data) => {
         console.log("Esta es la data: ",data)
@@ -113,21 +115,51 @@ function Signup(){
                             </select>
                         </div>
                     </div>
-                    <div className="col-md-5">
-                        <div className="form-group">
-                            <label htmlFor="">Tipo de Usuario</label>
-                            <select 
-                            value={inputs.role}
-                            onChange={handleInputChange}
-                            className="form-control" 
-                            name="role" 
-                            id="role">
-                                <option value=" " selected>Choose an option</option>
-                                <option value="ADMIN">Administrador</option>
-                                <option value="CUSTOMER">Cliente</option>
-                            </select>
-                        </div>
-                    </div>      
+                    { user
+                        ?   user.role === 'ADMIN' 
+                            ?
+                                <div className="col-md-5">
+                                    <div className="form-group">
+                                        <label htmlFor="">Tipo de Usuario</label>
+                                        <select 
+                                        value={inputs.role}
+                                        onChange={handleInputChange}
+                                        className="form-control" 
+                                        name="role" 
+                                        id="role">
+                                            <option value=" " selected>Choose an option</option>
+                                            <option value="ADMIN">Administrador</option>
+                                            <option value="CUSTOMER">Cliente</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            :   <div className="col-md-5">
+                                    <div className="form-group">
+                                        <label htmlFor="">Tipo de Usuario</label>
+                                        <select 
+                                        value={inputs.role}
+                                        onChange={handleInputChange}
+                                        className="form-control" 
+                                        name="role" 
+                                        id="role">
+                                            <option value="CUSTOMER">Cliente</option>
+                                        </select>
+                                    </div>
+                                </div>
+                        :   <div className="col-md-5">
+                                <div className="form-group">
+                                    <label htmlFor="">Tipo de Usuario</label>
+                                    <select 
+                                    value={inputs.role}
+                                    onChange={handleInputChange}
+                                    className="form-control" 
+                                    name="role" 
+                                    id="role">
+                                        <option value="CUSTOMER">Cliente</option>
+                                    </select>
+                                </div>
+                            </div>
+                    }    
                     <div className="col-md-12">
                         <button type="submit" className="btn btn-dark">Iniciar</button>
                     </div>

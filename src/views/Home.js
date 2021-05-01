@@ -17,7 +17,6 @@ function Home(){
                             <Link to="/users">
                                 <button type="button">Consultar clientes</button>
                             </Link>
-                            
                             <button>Consultar inventario</button>
                             <button>Editar Usuario</button>
                             <Link to="/signup">
