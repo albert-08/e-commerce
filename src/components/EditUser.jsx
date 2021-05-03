@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import {useHistory} from 'react-router-dom'
 import useForm from '../hooks/useForm' 
 import axios from 'axios'
@@ -8,13 +8,28 @@ function EditUser(){
     const user = payload()
     console.log(user.id)
     let history = useHistory()
-    const sendData = (data) => {
-        const token = window.localStorage.getItem('token')
+    const [profile,setProfile] = useState({})
+
+    const token = window.localStorage.getItem('token')
         const config = {
             headers:{
                 Authorization: `JWT ${token}`
             }
         }
+
+    useEffect(() => {
+        axios.get(`https://ecomerce-master.herokuapp.com/api/v1/user/${user.id}`,config)
+        .then((response) => {
+            setProfile(response.data)
+            console.log(response.data)
+        })
+        .catch((err) => {
+            alert(err.response.data.message)
+        })
+
+    },[])
+
+    const sendData = (data) => {
         console.log("Esta es la data: ",data)
         const cData = { ...data } 
         if(data.password === data.password_confirm)
@@ -33,7 +48,7 @@ function EditUser(){
             alert("Passwords no coinciden")
         }    
     }
-
+    console.log(profile)
     const {inputs,handleInputChange,handleSubmit} = useForm(sendData,{}) 
 
     return(
@@ -43,7 +58,8 @@ function EditUser(){
                     <div className="col-md-5">
                         <div className="form-group">
                             <label htmlFor="">Nombre</label>
-                            <input type="text" 
+                            <input type="text"
+                            placeholder={profile.first_name}
                             value={inputs.first_name}
                             onChange={handleInputChange}
                             className="form-control" 
@@ -54,7 +70,8 @@ function EditUser(){
                     <div className="col-md-5">
                         <div className="form-group">
                             <label htmlFor="">Apellidos</label>
-                            <input type="text" 
+                            <input type="text"
+                            placeholder={profile.last_name}
                             value={inputs.last_name}
                             onChange={handleInputChange}
                             className="form-control" 
@@ -65,7 +82,8 @@ function EditUser(){
                     <div className="col-md-5">
                         <div className="form-group">
                             <label htmlFor="">Email</label>
-                            <input type="email" 
+                            <input type="email"
+                            placeholder={profile.email}
                             value={inputs.email}
                             onChange={handleInputChange}
                             className="form-control" 
@@ -76,7 +94,8 @@ function EditUser(){
                     <div className="col-md-5">
                         <div className="form-group">
                             <label htmlFor="">Password</label>
-                            <input type="password" 
+                            <input type="password"
+                            placeholder={profile.password}
                             value={inputs.password}
                             onChange={handleInputChange}
                             className="form-control" 
@@ -87,7 +106,8 @@ function EditUser(){
                     <div className="col-md-5">
                         <div className="form-group">
                             <label htmlFor="">Password Confirm</label>
-                            <input type="password" 
+                            <input type="password"
+                            placeholder={profile.password} 
                             value={inputs.password_confirm}
                             onChange={handleInputChange}
                             className="form-control" 
@@ -98,7 +118,8 @@ function EditUser(){
                     <div className="col-md-5">
                         <div className="form-group">
                             <label htmlFor="">Fecha de nacimiento</label>
-                            <input type="date" 
+                            <input type="date"
+                            placeholder={profile.birth_date}
                             value={inputs.birth_date}
                             onChange={handleInputChange}
                             className="form-control" 

@@ -39,7 +39,9 @@ const Users = () => {
                         </h2>
                         <p>{user.role}</p>
                     </div>
-                    <button type="button">Editar</button>
+                    <Link to="/editUser">
+                        <button type="button">Editar</button>
+                    </Link>
                 </div>
                 ))}
             </div>
