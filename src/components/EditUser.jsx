@@ -37,7 +37,8 @@ function EditUser(){
             delete cData.password_confirm
             axios.patch(`https://ecomerce-master.herokuapp.com/api/v1/user/${user.id}`, cData, config)
             .then((response) => {
-                if(response.status === 201){
+                console.log(response)
+                if(response.status === 200){
                     //cuando se crea el usuario lo mandamos a login
                     history.push("/")
                 }

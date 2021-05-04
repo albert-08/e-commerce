@@ -9,7 +9,6 @@ import Information from './containers/Information'
 import Payment from './containers/Payment'
 import Success from './containers/Success'
 import NotFound from './containers/NotFound'
-import Layout from './components/Layout'
 import AppContext from './context/AppContext'
 import useInitialState from './hooks/useInitialState'
 import Users from './components/Users'
@@ -26,7 +25,6 @@ const Routes = () => {
     return(
         <AppContext.Provider value={initialState}>
             <Router>
-                <Layout>
                     <Switch>
                         <Route exact path="/" component={Home} />
                         <Route exact path="/login" component={Login} />
@@ -42,7 +40,6 @@ const Routes = () => {
                         <Route exact path="/checkout/success" component={Success} />
                         <Route component={NotFound} />
                     </Switch>
-                </Layout>
             </Router>
         </AppContext.Provider>
     )

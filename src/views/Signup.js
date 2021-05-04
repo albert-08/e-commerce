@@ -15,8 +15,9 @@ function Signup(){
             delete cData.password_confirm
             axios.post("https://ecomerce-master.herokuapp.com/api/v1/signup", cData)
             .then((response) => {
-                if(response.status === 201){
+                if(response.status === 200){
                     //cuando se crea el usuario lo mandamos a login
+                    alert("Usuario creado!")
                     history.push("/")
                 }
             }).catch((error) => {
