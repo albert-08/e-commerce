@@ -11,11 +11,11 @@ function EditUser(){
     const [profile,setProfile] = useState({})
 
     const token = window.localStorage.getItem('token')
-        const config = {
-            headers:{
-                Authorization: `JWT ${token}`
-            }
+    const config = {
+        headers:{
+            Authorization: `JWT ${token}`
         }
+    }
 
     useEffect(() => {
         axios.get(`https://ecomerce-master.herokuapp.com/api/v1/user/${user.id}`,config)

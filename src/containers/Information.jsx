@@ -1,8 +1,9 @@
-import React, { useContext, useRef } from 'react'
+import React, { useContext, useEffect, useRef, useState } from 'react'
 import { Link, useHistory } from 'react-router-dom'
 import AppContext from '../context/AppContext'
 import '../styles/components/Information.css'
 import payload from '../utils/payload'
+import axios from 'axios'
 
 const Information = () => {
     const {state, addToBuyer} = useContext(AppContext)
@@ -10,7 +11,26 @@ const Information = () => {
     const history = useHistory()
     const { cart } = state
     const user = payload()
-    console.log(user)
+    const [profile,setProfile] = useState({})
+
+    const token = window.localStorage.getItem('token')
+    const config = {
+        headers:{
+            Authorization: `JWT ${token}`
+        }
+    }
+
+    useEffect(() => {
+        axios.get(`https://ecomerce-master.herokuapp.com/api/v1/user/${user.id}`,config)
+        .then((response) => {
+            setProfile(response.data)
+            console.log(response.data)
+        })
+        .catch((err) => {
+            alert(err.response.data.message)
+        })
+
+    },[])
 
     const handleSubmit = () => {
         const formData = new FormData(form.current)
@@ -37,8 +57,8 @@ const Information = () => {
                 </div>
                 <div className="Information-form">
                     <form ref={form}>
-                        <input type="text" value={user.first_name} name="name" />
-                        <input type="text" placeholder="Email" name="email" />
+                        <input type="text" value={profile.first_name} name="name" />
+                        <input type="text" value={profile.email} name="email" />
                         <input type="text" placeholder="Direccion" name="address" />
                         <input type="text" placeholder="Apto" name="apto" />
                         <input type="text" placeholder="Ciudad" name="city" />
