@@ -2,12 +2,15 @@ import React, { useContext, useRef } from 'react'
 import { Link, useHistory } from 'react-router-dom'
 import AppContext from '../context/AppContext'
 import '../styles/components/Information.css'
+import payload from '../utils/payload'
 
 const Information = () => {
     const {state, addToBuyer} = useContext(AppContext)
     const form = useRef(null)
     const history = useHistory()
     const { cart } = state
+    const user = payload()
+    console.log(user)
 
     const handleSubmit = () => {
         const formData = new FormData(form.current)
@@ -34,7 +37,7 @@ const Information = () => {
                 </div>
                 <div className="Information-form">
                     <form ref={form}>
-                        <input type="text" placeholder="Nombre completo" name="name" />
+                        <input type="text" value={user.first_name} name="name" />
                         <input type="text" placeholder="Email" name="email" />
                         <input type="text" placeholder="Direccion" name="address" />
                         <input type="text" placeholder="Apto" name="apto" />
@@ -61,7 +64,7 @@ const Information = () => {
                 {cart.map((item) => (
                     <div className="Information-item">
                         <div className="Information-element">
-                            <h4>{item.title}</h4>
+                            <h4>{item.product_name}</h4>
                             <span>
                                 $
                                 {item.price}

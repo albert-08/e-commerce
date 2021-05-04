@@ -29,7 +29,8 @@ const Checkout = () => {
                     {cart.map((item) => (
                         <div className="Checkout-item">
                             <div className="Checkout-element">
-                                <h4>{item.title}</h4>
+                                <img src={item.image} alt={item._id} width="200px" height="200px" />
+                                <h4>{item.product_name}</h4>
                                 <span>
                                     $
                                     {item.price}

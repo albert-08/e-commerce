@@ -40,6 +40,7 @@ function EditUser(){
                 console.log(response)
                 if(response.status === 200){
                     //cuando se crea el usuario lo mandamos a login
+                    alert("El usuario se edito correctamente!")
                     history.push("/")
                 }
             }).catch((error) => {
